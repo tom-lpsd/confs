@@ -18,6 +18,9 @@
 (auto-install-compatibility-setup)
 (setq ediff-window-setup-function 'ediff-setup-window-plain)
 
+(when (load (expand-file-name "~/.emacs.d/elpa/package.el"))
+  (package-initialize))
+
 ;;; 以下 Emacs テクニックバイブル p.59 より
 
 ;;; gcを減らす
