@@ -27,3 +27,5 @@
 (defadvice abort-recursive-edit (before minibuffer-save activate)
   (when (eq (selected-window) (active-minibuffer-window))
     (add-to-history minibuffer-history-variable (minibuffer-contents))))
+
+(setq bookmark-save-flag 1)
