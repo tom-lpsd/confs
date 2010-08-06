@@ -1,4 +1,5 @@
 (global-set-key (kbd "C-h") 'delete-backward-char)
+(global-set-key (kbd "C-,") 'recentf-open-files)
 
 (require 'sticky)
 (use-sticky-key ";" sticky-alist:en)

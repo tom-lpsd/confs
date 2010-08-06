@@ -29,3 +29,9 @@
     (add-to-history minibuffer-history-variable (minibuffer-contents))))
 
 (setq bookmark-save-flag 1)
+
+(setq recentf-max-saved-items 3000)
+
+(setq recentf-exclude '("/TAGS$" "/var/tmp/"))
+
+(require 'recentf-ext)
