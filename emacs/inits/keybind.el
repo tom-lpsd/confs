@@ -13,3 +13,9 @@
 
 (require 'space-chord)
 (space-chord-define-global "f" 'find-file)
+(space-chord-define-global "j" 'toggle-input-method)
+
+(defadvice toggle-input-method (around toggle-input-method-around activate)
+  (let ((input-method-function-save input-method-function))
+    ad-do-it
+    (setq input-method-function input-method-function-save)))
