@@ -6,4 +6,8 @@
 (transient-mark-mode 1)
 (show-paren-mode 1)
 (global-hl-line-mode 1)
-(set-face-background 'hl-line "floral white")
+(setq initial-frame-alist
+      '((top . 0) (left . 0) (width . 80) (height . 47)))
+(when (require 'color-theme nil t)
+  (color-theme-initialize)
+  (color-theme-parus))
