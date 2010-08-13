@@ -10,3 +10,5 @@
 (defun kill-current-buffer ()
   (interactive)
   (kill-buffer nil))
+
+(global-set-key (kbd "C-x C-b") 'buffer-menu)
