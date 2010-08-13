@@ -1,0 +1,5 @@
+(require 'skk-autoloads)
+(setq skk-server-host "localhost")
+(setq skk-server-portnum 1178)
+(setq skk-jisyo-code 'utf-8-unix)
+(global-set-key (kbd "C-x C-j") 'skk-mode)

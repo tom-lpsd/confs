@@ -9,3 +9,6 @@
       (append '((active-alpha . 0.80)
 		(alpha . (95 95))
 		(inactive-alpha . 0.50)) default-frame-alist))
+
+(setq default-input-method nil)
+(load "skk-setting" nil t nil)

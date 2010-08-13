@@ -1,6 +1,7 @@
 (require 'cl)
 
 (add-to-list 'load-path "~/.emacs.d")
+(add-to-list 'load-path "~/.emacs.d/site-lisp/skk")
 (defvar inits-directory "~/.emacs.d/inits")
 
 (require 'auto-install)

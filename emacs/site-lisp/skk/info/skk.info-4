@@ -1,0 +1,695 @@
+Info file: skk.info,    -*-Text-*-
+produced by `texinfo-format-buffer'
+from file `skk.texi'
+using `texinfmt.el' version 2.42 of  7 Jul 2006.
+
+INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION GNU Emacs Lisp
+START-INFO-DIR-ENTRY
+* SKK: (skk).           Simple Kana to Kanji conversion program.
+END-INFO-DIR-ENTRY
+
+
+
+ Permission is granted to make and distribute verbatim copies of this
+manual provided the copyright notice and this permission notice are
+preserved on all copies.
+
+ Permission is granted to copy and distribute modified versions of
+this manual under the conditions for verbatim copying, provided that
+the entire resulting derived work is distributed under the terms of a
+permission notice identical to this one.
+
+ Permission is granted to copy and distribute translations of this
+manual into another language, under the above conditions for modified
+versions, except that this permission notice may be stated in a
+translation approved by the author.
+
+
+File: skk.info, Node: Miscellaneous, Prev: Dictionaries, Up: よくある質問とその回答(FAQ)
+
+SKK の活用法その他
+==================
+
+* Menu:
+
+* Q.5-1 abbrev モードって何ですか?::
+* Q.5-2 abbrev モードでもっと英単語を利用した変換ができませんか?::
+* Q.5-3 市販の CD-ROM 辞書やネットワークの辞書サーバが利用できますか?::
+* Q.5-4 他の FEP を使用中にも SHIFT を押してしまいます。::
+
+
+
+File: skk.info, Node: Q.5-1 abbrev モードって何ですか?, Next: Q.5-2 abbrev モードでもっと英単語を利用した変換ができませんか?, Prev: Miscellaneous, Up: Miscellaneous
+
+Q.5-1 abbrev モードって何ですか?
+--------------------------------
+
+       ▽is SPC
+            ==> `インクリメンタル・サーチ'
+
+などのように短い英語見出しから変換できると便利だとは思いませんか?
+
+ かな/カナモードで、`/' キーを入力してみて下さい。`▽'が出てアスキー文
+字が入力できるようになるはずです。ここで英文字を入力して SPC を押せば変
+換できます。
+
+ もちろん対応するエントリが辞書にないと単語登録モードに入りますよ。
+
+
+
+File: skk.info, Node: Q.5-2 abbrev モードでもっと英単語を利用した変換ができませんか?, Next: Q.5-3 市販の CD-ROM 辞書やネットワークの辞書サーバが利用できますか?, Prev: Q.5-1 abbrev モードって何ですか?, Up: Miscellaneous
+
+Q.5-2 abbrev モードでもっと英単語を利用した変換ができませんか?
+--------------------------------------------------------------
+
+ UNIX `look' コマンドと `skk-look.el' を利用すると、色々できますよ。ま
+ず、 `~/.skk' か `~/.emacs' で `skk-use-look' をt にセットして
+Emacs/SKK を立ち上げ直して下さい。
+
+ さぁ、下記のような芸当が可能になりました。
+
+  1. 英単語の補完ができます。
+
+            ▽abstr(TAB) ==> ▽abstract
+
+     通常の補完機能同様、`.' で次の補完候補、`,' でひとつ前の補完候補に
+     移動できます。SKK 形式の英和辞書があれば、ここから SPC を押して英
+     和変換ができますね。また、`skk-look-use-ispell' の値が`non-nil' で
+     あれば、`look' で検索する前に `ispell' でスペルチェック・修正をし
+     ます。
+
+  2. 英単語をあいまいに変換して取り出すことができます。上記同様、
+     `skk-look-use-ispell' の値が `non-nil' であれば、`look' で検索する
+     前に `ispell' でスペルチェック・修正をします。
+
+            ▽abstr* (SPC) ==> ▼abstract
+
+     見出し語に `*' を入れるのをお忘れなく。
+
+  3. あいまいに変換した後、更に再帰的な英和変換を行うことができます。
+
+     まず、`skk-look-recursive-search' の値を `non-nil' にセットして下
+     さい。Emacs/SKK を再起動する必要はありません。すると、例えば、
+
+            ▽abstr* (SPC)
+                 ==> ▼abstract (SPC)
+                 ==> ▼アブストラクト (SPC)
+                 ==> ▼抽象 (SPC)
+                 ==> ▼abstraction (SPC)
+                 ==> ▼アブストラクション
+
+     このように英単語 + その英単語を見出し語にした候補の「セット」を変
+     換結果として出力することができます。
+
+     この際、`skk-look-expanded-word-only' の値が `non-nil' であれば、
+     再帰検索に成功した英単語の「セット」だけを出力することができます
+     (再帰検索で検出されなかった英単語は無視して出力しません) 。
+
+     もちろん、SKK 辞書に
+
+            abstract /アブストラクト/抽象/
+            abstraction /アブストラクション/
+
+     というエントリがあることを前提としています。edict を SKK 辞書形式
+     に変換すると良いですね。
+
+ なお、`skk-look.el' を使った補完・変換が期待するスピードよりも遅い、補
+完・変換で余分な候補が出る、とお感じの貴方は、`skk-look-use-ispell' の
+値を `nil' にして `ispell' によるスペルチェック・修正をオフにしてお試し
+下さい。
+
+
+
+File: skk.info, Node: Q.5-3 市販の CD-ROM 辞書やネットワークの辞書サーバが利用できますか?, Next: Q.5-4 他の FEP を使用中にも SHIFT を押してしまいます。, Prev: Q.5-2 abbrev モードでもっと英単語を利用した変換ができませんか?, Up: Miscellaneous
+
+Q.5-3 SKK の検索で、市販の CD-ROM 辞書やネットワークの辞書サーバが利用できますか?
+---------------------------------------------------------------------------------
+
+ Lookup が扱える辞書はほとんど使えます。Lookup がインストールされている
+状態で SKK をインストールすると、SKK と Lookup のゲートウェイプログラム
+`skk-lookup.el' がインストールされます。
+
+ インストールで注意すべきは、`make' で呼び出される Emacs は
+`-q -no-site-file' フラグ付きで呼ばれるので、`~/.emacs' や
+`site-start.el' などは読み込まれないことです。デフォルトで`load-path'
+の通っているディレクトリに lookup をインストールするか、`SKK-CFG' の中
+で VERSION_SPECIFIC_LISPDIR などにディレクトリを明示することで解決でき
+ます。
+
+ さぁ、`~/.emacs' か `~/.skk' で `skk-search-prog-list' の要素に
+`(skk-lookup-search)' を追加しましょう。他の検索エンジンよりも検索は比
+較的重いので、最後の方が良いと思います。
+
+ こんな感じです。
+
+     (setq skk-search-prog-list
+           '((skk-search-jisyo-file skk-jisyo 0 t)
+             (skk-search-server skk-aux-large-jisyo 10000)
+             (skk-lookup-search)))
+
+ Lookup については、
+
+     `http://openlab.jp/edict/lookup/'
+
+をご参照下さい。中島は、ローカルマシンのハードディスクに広辞苑の第四版
+をコピーして利用していますが、速度的には十分満足しています。ちなみに
+epwutil で `squeeze' した辞書データのサイズは 45MB 弱です。
+
+
+
+File: skk.info, Node: Q.5-4 他の FEP を使用中にも SHIFT を押してしまいます。, Prev: Q.5-3 市販の CD-ROM 辞書やネットワークの辞書サーバが利用できますか?, Up: Miscellaneous
+
+Q.5-4 SKK を使い始めてから、他の FEP を使用中にも SHIFT を押してしまいます。(T_T)
+---------------------------------------------------------------------------------
+
+ 治すには SKK をやめるしかありません :-)
+
+Emacs 上以外でも SKK みたいな操作性を実現するソフトウェアがあります。
+*Note SKK関連ソフトウェア:: をご覧になってください。
+
+
+
+File: skk.info, Node: 事項索引, Next: 変数索引, Prev: よくある質問とその回答(FAQ), Up: Top
+
+事項索引
+********
+
+
+* Menu:
+
+* ;; okuri-ari entries.:        送りありエントリと送りなしエントリ.  (line   8)
+* ;; okuri-nasi entries.:       送りありエントリと送りなしエントリ.  (line   8)
+* ` *SKK-JISYO.L*':             辞書バッファのメジャーモード.  (line   5)
+* #0:                           数値変換.               (line   5)
+* #1:                           数値変換.               (line   5)
+* #2:                           数値変換.               (line   5)
+* #3:                           数値変換.               (line   5)
+* #4:                           数値変換.               (line   5)
+* #5:                           数値変換.               (line   5)
+* #9:                           数値変換.               (line   5)
+* abbrev モード:                Q.5-1 abbrev モードって何ですか?.  (line   5)
+* APEL:                         APEL のインストール.    (line   5)
+* Auto Fill:                    SKKオートフィルモード.  (line   5)
+* 暗黙の確定:                   暗黙の確定のタイミング.  (line   5)
+* 暗黙の確定:                   確定変換とその取り消し.  (line  28)
+* 暗黙の確定:                   確定アンドゥ.           (line   5)
+* 暗黙の確定:                   送り仮名が無い場合の辞書登録.  (line  20)
+* 暗黙の確定:                   ▼モード.               (line   5)
+* 英単語の検索:                 Q.5-2 abbrev モードでもっと英単語を利用した変換ができませんか?.  (line   5)
+* 英和辞書:                     Q.4-4 SKK 形式の英和辞書があると聞いたのですが。.  (line   5)
+* 改行文字を含む文字列の辞書登録: 改行文字を含む辞書登録.  (line   6)
+* 確定入力:                     ■モード.               (line   6)
+* 確定入力モード:               ■モード.               (line   6)
+* 確定変換:                     辞書検索のための関数.   (line  14)
+* 確定アンドゥ:                 確定アンドゥ.           (line   5)
+* 逆引き:                       領域一括変換.           (line  25)
+* 共有辞書:                     辞書の種別.             (line  10)
+* 個人辞書:                     個人辞書の保存動作.     (line   5)
+* 個人辞書:                     辞書の種別.             (line  21)
+* 個人辞書のオートセーブ:       個人辞書の保存動作.     (line   5)
+* 個人辞書エントリの削除:       個人辞書中の単語の削除.  (line   5)
+* 誤登録:                       個人辞書中の単語の削除.  (line   5)
+* 見出し語の補完:               見出し語の補完.         (line   5)
+* 見出し語の補完:               見出し語を補完しながら▼モードへ.  (line   5)
+* アスキーモード:               入力モード.             (line  11)
+* 全英モード:                   入力モード.             (line  11)
+* チュートリアル:               チュートリアル.         (line   6)
+* チュートリアル:               Q.3-8 チュートリアルが起動できません。.  (line   5)
+* メニューバー:                 領域一括変換.           (line   8)
+* メニューバー:                 辞書候補数の数えあげ.   (line   5)
+* 送りなし変換:                 送りありエントリと送りなしエントリ.  (line  47)
+* 送りなしエントリ:             送りありエントリと送りなしエントリ.  (line  46)
+* 送りあり変換:                 送りありエントリと送りなしエントリ.  (line  47)
+* 送りありエントリ:             送りありエントリと送りなしエントリ.  (line  44)
+* ■モード:                     ■モード.               (line   6)
+* ▽モード:                     ▽モード.               (line   6)
+* 直線的検索:                   辞書検索のための関数.   (line  21)
+* 再帰的辞書登録:               再帰的辞書登録.         (line   6)
+* 接頭辞:                       接頭辞・接尾辞.         (line   5)
+* 読みの補完:                   見出し語の補完.         (line   5)
+* 読みの補完:                   見出し語を補完しながら▼モードへ.  (line   5)
+* 日本語入力コンソーシアム:     Q.3-6 左手の小指を SHIFT で酷使したくありません。.  (line  68)
+* 二分検索:                     辞書検索のための関数.   (line  21)
+* 親指シフト入力:               Q.3-6 左手の小指を SHIFT で酷使したくありません。.  (line  64)
+* トグル変換:                   ひらがな/カタカナの一時的入力.  (line   5)
+* オートフィル:                 SKKオートフィルモード.  (line   5)
+* 接尾辞:                       接頭辞・接尾辞.         (line   5)
+* 品詞情報:                     Q.4-2 SKK の辞書には、品詞情報がないんですね。.  (line   5)
+* かなモード:                   入力モード.             (line  11)
+* カナモード:                   入力モード.             (line  11)
+* 変換開始:                     ▼モード.               (line   5)
+* ローマ字入力:                 ■モード.               (line  12)
+* ローマ字プレフィックス:       送りありエントリと送りなしエントリ.  (line  57)
+* ▽マークの付け忘れ:           後から▽モードに入る方法.  (line   5)
+* ▽マークの付け忘れ:           ポイントを戻して▽モードへ.  (line   6)
+* 和英変換:                     Q.5-2 abbrev モードでもっと英単語を利用した変換ができませんか?.  (line   5)
+* ハイライト:                   ▼モード.               (line   5)
+* パッケージ:                   Q.3-8 チュートリアルが起動できません。.  (line  13)
+* 辞書登録:                     辞書登録モード.         (line   6)
+* 辞書変換対象の文字列の決定:   ▽モード.               (line   6)
+* 辞書のマージ:                 Q.4-3 SKK には辞書をマージするプログラムは付いてないの?.  (line   5)
+* 辞書のソート方法:             エントリの配列.         (line   6)
+* 辞書バッファの名付け規則:     辞書バッファのメジャーモード.  (line   5)
+* BS:                           picture-modeとの併用.   (line   5)
+* インストール:                 インストール.           (line   5)
+* エントリ:                     送りありエントリと送りなしエントリ.  (line  30)
+* 数値再変換:                   数値変換.               (line   5)
+* 数をパラメータとする語の変換: 数値変換.               (line   5)
+* 数字から始まる見出し語の入力: 後から▽モードに入る方法.  (line  29)
+* プログラム実行変換:           今日の日付の入力.       (line   5)
+* Canna:                        Q.3-9 スペースを押しても変換できません。.  (line   9)
+* `canna.el':                   ▼モードにおける変換候補のハイライト表示.  (line   5)
+* `ccc.el':                     ファイル構成.           (line   5)
+* `context-skk.el':             ファイル構成.           (line   5)
+* `context-skk.el':             ファイル構成.           (line  12)
+* `dabbrev.el':                 辞書バッファのメジャーモード.  (line   5)
+* edict:                        Q.4-4 SKK 形式の英和辞書があると聞いたのですが。.  (line   5)
+* edict:                        Q.5-2 abbrev モードでもっと英単語を利用した変換ができませんか?.  (line   5)
+* `edict2skk.awk':              Q.4-4 SKK 形式の英和辞書があると聞いたのですが。.  (line   5)
+* `~/.emacs':                   ユーザーオプションの設定方法.  (line   6)
+* EUCコード:                    漢字コードまたはメニューによる文字入力.  (line   6)
+* EUCコード:                    漢字コードを知る方法.   (line   5)
+* Extents:                      ▼モードにおける変換候補のハイライト表示.  (line  12)
+* Incremental regexp search:    間に空白等を含む文字列の検索.  (line   5)
+* Incremental search:           インクリメンタル・サーチ.  (line   5)
+* Incremental search:           I-search関連.           (line   5)
+* I-search:                     インクリメンタル・サーチ.  (line   5)
+* I-search:                     I-search関連.           (line   5)
+* `isearch.el':                 インクリメンタル・サーチ.  (line   5)
+* JISコード:                    漢字コードまたはメニューによる文字入力.  (line   6)
+* JISコード:                    漢字コードを知る方法.   (line   5)
+* `keyboard.c':                 1回の取り消し操作(undo)の対象.  (line   5)
+* KKC:                          Q.1-6 Emacs に付属の SKK を使っているのですが.  (line   5)
+* L 辞書:                       辞書の種別.             (line  10)
+* `leim-list.el':               ファイル構成.           (line   5)
+* `look':                       Q.5-2 abbrev モードでもっと英単語を利用した変換ができませんか?.  (line   5)
+* Lookup:                       Q.5-3 市販の CD-ROM 辞書やネットワークの辞書サーバが利用できますか?.  (line   5)
+* Lookup:                       skk-lookup.             (line   5)
+* M 辞書:                       辞書の種別.             (line  10)
+* Menu Bars:                    領域一括変換.           (line   8)
+* Menu Bars:                    辞書候補数の数えあげ.   (line   5)
+* move-to-column:               picture-modeとの併用.   (line   5)
+* move-to-column-force:         picture-modeとの併用.   (line   5)
+* NICOLA:                       Q.3-6 左手の小指を SHIFT で酷使したくありません。.  (line  68)
+* OASYS:                        Q.3-6 左手の小指を SHIFT で酷使したくありません。.  (line  68)
+* Overlays:                     ▼モード.               (line   5)
+* Overlays:                     ▼モードにおける変換候補のハイライト表示.  (line  12)
+* `picture.el':                 picture-modeとの併用.   (line   5)
+* picture-mode:                 picture-modeとの併用.   (line   5)
+* `queue-m.el':                 ファイル構成.           (line   5)
+* `queue-m.el':                 ファイル構成.           (line 217)
+* `rgb.txt':                    ▼モードにおける変換候補のハイライト表示.  (line   5)
+* S 辞書:                       辞書の種別.             (line  10)
+* `~/.skk':                     ユーザーオプションの設定方法.  (line   6)
+* `~/.skk':                     I-search関連.           (line   5)
+* SKK abbrev mode:              アスキー文字を見出し語とした変換.  (line   6)
+* `skk-abbrev.el':              ファイル構成.           (line   5)
+* `skk-abbrev.el':              ファイル構成.           (line  18)
+* `skk-act.el':                 ファイル構成.           (line   5)
+* `skk-act.el':                 ファイル構成.           (line  25)
+* `skk-annotation.el':          ファイル構成.           (line   5)
+* `skk-annotation.el':          ファイル構成.           (line  33)
+* `skk-auto.el':                ファイル構成.           (line   5)
+* `skk-auto.el':                ファイル構成.           (line  39)
+* `skk-autoloads.el':           ファイル構成.           (line   5)
+* `skk-autoloads.el':           ファイル構成.           (line  46)
+* `skk-azik.el':                ファイル構成.           (line   5)
+* `skk-azik.el':                ファイル構成.           (line  53)
+* `skk-bayesian.el':            ファイル構成.           (line   5)
+* `skk-bayesian.el':            ファイル構成.           (line  60)
+* `SKK-CFG':                    DDSKK のインストール.   (line   5)
+* `skk-comp.el':                ファイル構成.           (line   5)
+* `skk-comp.el':                ファイル構成.           (line  68)
+* `skk-cursor.el':              ファイル構成.           (line   5)
+* `skk-cursor.el':              ファイル構成.           (line  75)
+* `skk-dcomp.el':               ▽モードにおける自動ダイナミックコンプリーション.  (line   5)
+* `skk-dcomp.el':               ファイル構成.           (line   5)
+* `skk-dcomp.el':               ファイル構成.           (line  80)
+* SKK_DEFAULT_JISYO:            DDSKK のインストール.   (line   5)
+* `skk-develop.el':             ファイル構成.           (line   5)
+* `skk-develop.el':             ファイル構成.           (line  85)
+* `skk-dic.el':                 ファイル構成.           (line   5)
+* `skk-dic.el':                 ファイル構成.           (line  90)
+* `skkdic-expr':                Q.4-4 SKK 形式の英和辞書があると聞いたのですが。.  (line   5)
+* `skkdic-sort':                Q.4-4 SKK 形式の英和辞書があると聞いたのですが。.  (line   5)
+* `skk-e21.el':                 ファイル構成.           (line   5)
+* `skk-e21.el':                 ファイル構成.           (line  95)
+* `skk.el':                     ファイル構成.           (line   5)
+* `skk-gadget.el':              ファイル構成.           (line   5)
+* `skk-gadget.el':              ファイル構成.           (line 101)
+* `skk-gadget.el':              プログラム実行変換.     (line   5)
+* `skk-hint.el':                ファイル構成.           (line   5)
+* `skk-hint.el':                ファイル構成.           (line 108)
+* `skk-isearch.el':             ファイル構成.           (line   5)
+* `skk-isearch.el':             ファイル構成.           (line 113)
+* `skk-jisx0201.el':            ファイル構成.           (line   5)
+* `skk-jisx0201.el':            ファイル構成.           (line 120)
+* `skk-jisx0213.el':            ファイル構成.           (line   5)
+* `skk-jisx0213.el':            ファイル構成.           (line 125)
+* `SKK_JISYO':                  辞書サーバを使いたいときの設定.  (line  47)
+* `skk-jisyo-edit-mode.el':     ファイル構成.           (line   5)
+* `skk-jisyo-edit-mode.el':     ファイル構成.           (line 130)
+* `SKK-JISYO.L':                辞書の種別.             (line  10)
+* `SKK-JISYO.M':                辞書の種別.             (line  10)
+* `SKK-JISYO.ML':               辞書の種別.             (line  10)
+* `SKK-JISYO.S':                辞書の種別.             (line  10)
+* `skk-kakasi.el':              ファイル構成.           (line   5)
+* `skk-kakasi.el':              ファイル構成.           (line 135)
+* `skk-kanagaki.el':            ファイル構成.           (line   5)
+* `skk-kanagaki.el':            ファイル構成.           (line 142)
+* `skk-kcode.el':               ファイル構成.           (line   5)
+* `skk-kcode.el':               ファイル構成.           (line 151)
+* `skk-leim.el':                ファイル構成.           (line   5)
+* `skk-leim.el':                ファイル構成.           (line 159)
+* `skk-look.el':                ファイル構成.           (line   5)
+* `skk-look.el':                ファイル構成.           (line 165)
+* `skk-look.el':                Q.5-2 abbrev モードでもっと英単語を利用した変換ができませんか?.  (line   5)
+* `skk-look.el':                skk-look.               (line   5)
+* `skk-lookup.el':              ファイル構成.           (line   5)
+* `skk-lookup.el':              ファイル構成.           (line 171)
+* `skk-lookup.el':              Q.5-3 市販の CD-ROM 辞書やネットワークの辞書サーバが利用できますか?.  (line   5)
+* `skk-lookup.el':              skk-lookup.             (line   5)
+* `skk-macs.el':                ファイル構成.           (line   5)
+* `skk-macs.el':                ファイル構成.           (line 178)
+* `skk-num.el':                 ファイル構成.           (line   5)
+* `skk-num.el':                 ファイル構成.           (line 183)
+* `skk-obsolete.el':            最も基本的な設定.       (line   5)
+* `skk-obsolete.el':            ファイル構成.           (line   5)
+* `skk-obsolete.el':            ファイル構成.           (line 190)
+* `SKKSERV':                    辞書サーバを使いたいときの設定.  (line  47)
+* `SKKSERVER':                  辞書サーバを使いたいときの設定.  (line  47)
+* `skk-server-completion.el':   ファイル構成.           (line   5)
+* `skk-server-completion.el':   ファイル構成.           (line 196)
+* `skk-server.el':              ファイル構成.           (line   5)
+* `skk-server.el':              ファイル構成.           (line 201)
+* `skk-setup.el':               ファイル構成.           (line   5)
+* `skk-setup.el':               ファイル構成.           (line 208)
+* `skk-study.el':               変換の学習.             (line   5)
+* `skk-study.el':               ファイル構成.           (line   5)
+* `skk-study.el':               ファイル構成.           (line 213)
+* `skk-tankan.el':              ファイル構成.           (line   5)
+* `skk-tankan.el':              ファイル構成.           (line 221)
+* `skk-tutcode.el':             ファイル構成.           (line   5)
+* `skk-tutcode.el':             ファイル構成.           (line 231)
+* `skk-tut.el':                 ファイル構成.           (line   5)
+* `skk-tut.el':                 ファイル構成.           (line 226)
+* `skk-vars.el':                ファイル構成.           (line   5)
+* `skk-vars.el':                ファイル構成.           (line 236)
+* `skk-version.el':             ファイル構成.           (line   5)
+* `skk-version.el':             ファイル構成.           (line 242)
+* `skk-viper.el':               ファイル構成.           (line   5)
+* `skk-viper.el':               ファイル構成.           (line 247)
+* `skk-xemacs.el':              ファイル構成.           (line   5)
+* `skk-xemacs.el':              ファイル構成.           (line 252)
+* T-code:                       ■モードにおける文字変換.  (line   5)
+* Text Properties:              ▼モードにおける変換候補のハイライト表示.  (line  12)
+* TUT-code:                     ■モードにおける文字変換.  (line   5)
+* VIP:                          VIP/VIPERとの併用.      (line   5)
+* `vip.el':                     VIP/VIPERとの併用.      (line   5)
+* VIPER:                        VIP/VIPERとの併用.      (line   5)
+* `viper.el':                   VIP/VIPERとの併用.      (line   5)
+* xmodmap:                      Q.3-6 左手の小指を SHIFT で酷使したくありません。.  (line  56)
+
+
+
+File: skk.info, Node: 変数索引, Next: 関数索引, Prev: 事項索引, Up: Top
+
+変数索引
+********
+
+
+* Menu:
+
+* buffer-file-name:             辞書バッファのbuffer-file-name.  (line   5)
+* canna-use-space-key-as-henkan-region: Q.3-9 スペースを押しても変換できません。.  (line  13)
+* isearch-mode-end-hook:        インクリメント検索の設定.  (line   5)
+* isearch-mode-hook:            インクリメント検索の設定.  (line   5)
+* key-translation-map:          Q.3-6 左手の小指を SHIFT で酷使したくありません。.  (line  46)
+* major-mode:                   辞書バッファのメジャーモード.  (line   5)
+* minibuffer-exit-hook:         送り仮名の厳密なマッチ.  (line   5)
+* minibuffer-setup-hook:        送り仮名の厳密なマッチ.  (line   5)
+* mode-name:                    辞書バッファのメジャーモード.  (line   5)
+* skk-allow-spaces-newlines-and-tabs: 空白・改行・タブを含んだ見出し語の変換.  (line  39)
+* skk-allow-spaces-newlines-and-tabs: ポイントを戻して▽モードへ.  (line  12)
+* skk-annotation-show-as-message: 辞書のアノテーション(註釈).  (line   5)
+* skk-annotation-show-as-message: DDSKK 12 からの変更点.  (line  58)
+* skk-auto-fill-mode-hook:      ユーザーオプションの設定方法.  (line  37)
+* skk-auto-insert-paren:        対になる文字列の一括入力.  (line  10)
+* skk-auto-load-hook:           ユーザーオプションの設定方法.  (line  62)
+* skk-auto-okuri-process:       送りあり変換の変換開始のタイミング.  (line   8)
+* skk-auto-okuri-process:       送りありエントリのブロック形式.  (line  17)
+* skk-auto-okuri-process:       自動変換開始.           (line  21)
+* skk-auto-okuri-process:       どのように変換されるか.  (line   8)
+* skk-auto-paren-string-alist:  対になる文字列の一括入力.  (line  27)
+* skk-auto-start-henkan-keyword-list: 自動変換開始.     (line  39)
+* skk-aux-large-jisyo:          辞書ファイルを指定する変数.  (line  47)
+* skk-backup-jisyo:             辞書の保存.             (line   5)
+* skk-backup-jisyo:             辞書ファイルを指定する変数.  (line  55)
+* skk-byte-compile-init-file:   skk-init-fileのコンパイル.  (line   8)
+* skk-check-okurigana-on-touroku: 送り仮名が有る場合の辞書登録.  (line   5)
+* skk-compare-jisyo-size-when-saving: 個人辞書の保存動作.  (line  47)
+* skk-comp-load-hook:           ユーザーオプションの設定方法.  (line  62)
+* skk-count-private-jisyo-candidates-exactly: 変換及び個人辞書に関する統計.  (line  29)
+* skk-cursor-default-color:     入力モードを示すカーソル色に関する設定.  (line  19)
+* skk-cursor-hiragana-color:    入力モードを示すカーソル色に関する設定.  (line  25)
+* skk-cursor-jisx0208-latin-color: 入力モードを示すカーソル色に関する設定.  (line  37)
+* skk-cursor-katakana-color:    入力モードを示すカーソル色に関する設定.  (line  31)
+* skk-cursor-latin-color:       入力モードを示すカーソル色に関する設定.  (line  43)
+* skk-date-ad:                  今日の日付の入力.       (line  12)
+* skk-dcomp-activate:           ▽モードにおける自動ダイナミックコンプリーション.  (line   5)
+* skk-delete-implies-kakutei:   ▼モードでのBS.         (line  23)
+* skk-delete-okuri-when-quit:   送りあり変換中のC-g.    (line  23)
+* skk-echo:                     仮名文字のローマ字プレフィックスのエコー.  (line   8)
+* skk-egg-like-newline:         ▼モードでのRET.        (line  26)
+* skk-gadget-load-hook:         ユーザーオプションの設定方法.  (line  62)
+* skk-henkan-face:              ▼モードにおける変換候補のハイライト表示.  (line  17)
+* skk-henkan-okuri-strictly:    送り仮名の厳密なマッチ.  (line  19)
+* skk-henkan-okuri-strictly:    送り仮名の優先的なマッチ.  (line  23)
+* skk-henkan-okuri-strictly:    送りあり変換の変換開始のタイミング.  (line   8)
+* skk-henkan-okuri-strictly:    送りありエントリのブロック形式.  (line  17)
+* skk-henkan-show-candidates-keys: 候補の選択に用いるキー.  (line  17)
+* skk-hiragana-mode-string:     入力モードを示すモードラインの文字列の変更.  (line  16)
+* skk-indicator-use-cursor-color: XEmacs & Emacs 21 のモードライン.  (line   5)
+* skk-initial-search-jisyo:     辞書の種別.             (line  31)
+* skk-initial-search-jisyo:     辞書ファイルを指定する変数.  (line  16)
+* skk-input-by-code-menu-keys1: 候補の選択に用いるキー.  (line  27)
+* skk-isearch-start-mode:       起動時の入力モードの指定.  (line  15)
+* skk-isearch-use-previous-mode: 起動時の入力モードの指定.  (line   8)
+* skk-isearch-whitespace-regexp: 間に空白等を含む文字列の検索.  (line  32)
+* skk-japanese-message-and-error: エラーなどの日本語表示.  (line  11)
+* skk-jisx0208-latin-mode-string: 入力モードを示すモードラインの文字列の変更.  (line  26)
+* skk-jisyo:                    辞書の保存.             (line   5)
+* skk-jisyo:                    辞書の種別.             (line  21)
+* skk-jisyo:                    辞書ファイルを指定する変数.  (line  26)
+* skk-jisyo-code:               辞書バッファの文字コードの設定.  (line   8)
+* skk-jisyo-save-count:         個人辞書の保存動作.     (line  53)
+* skk-kakasi-load-hook:         ユーザーオプションの設定方法.  (line  62)
+* skk-kakutei-early:            暗黙の確定のタイミング.  (line  36)
+* skk-kakutei-early:            送りあり変換の変換開始のタイミング.  (line   8)
+* skk-kakutei-henkan-flag:      辞書検索のための関数.   (line  14)
+* skk-kakutei-jisyo:            確定変換とその取り消し.  (line   6)
+* skk-kakutei-jisyo:            辞書の種別.             (line  31)
+* skk-kakutei-jisyo:            辞書ファイルを指定する変数.  (line   8)
+* skk-kakutei-key:              確定動作を行うキー.     (line   8)
+* skk-kana-input-search-function: ■モードに関連するその他の変数.  (line   8)
+* skk-kana-rom-vector:          辞書登録の際に注意すべきこと.  (line  59)
+* skk-katakana-mode-string:     入力モードを示すモードラインの文字列の変更.  (line  21)
+* skk-kcode-load-hook:          ユーザーオプションの設定方法.  (line  62)
+* skk-keep-record:              変換及び個人辞書に関する統計.  (line  22)
+* skk-large-jisyo:              辞書バッファのメジャーモード.  (line   5)
+* skk-large-jisyo:              辞書ファイルを指定する変数.  (line  39)
+* skk-large-jisyo:              Q.3-7 全く漢字が出てきません。.  (line  21)
+* skk-latin-mode-string:        入力モードを示すモードラインの文字列の変更.  (line  11)
+* skk-load-hook:                ユーザーオプションの設定方法.  (line  43)
+* skk-look-expanded-word-only:  英単語をあいまいに変換して取り出した後、更に再帰的な英和変換を行う.  (line   5)
+* skk-look-expanded-word-only:  Q.5-2 abbrev モードでもっと英単語を利用した変換ができませんか?.  (line   5)
+* skk-look-recursive-search:    英単語をあいまいに変換して取り出した後、更に再帰的な英和変換を行う.  (line   5)
+* skk-look-recursive-search:    Q.5-2 abbrev モードでもっと英単語を利用した変換ができませんか?.  (line   5)
+* skk-lookup-search-agents:     skk-lookup.             (line   5)
+* skk-look-use-ispell:          Q.5-2 abbrev モードでもっと英単語を利用した変換ができませんか?.  (line   5)
+* skk-mode-hook:                ユーザーオプションの設定方法.  (line  31)
+* skk-number-style:             今日の日付の入力.       (line  18)
+* skk-num-convert-float:        数値変換.               (line 115)
+* skk-num-load-hook:            ユーザーオプションの設定方法.  (line  62)
+* skk-process-okuri-early:      暗黙の確定のタイミング.  (line   5)
+* skk-process-okuri-early:      送り仮名の厳密なマッチ.  (line  19)
+* skk-process-okuri-early:      送り仮名の優先的なマッチ.  (line  23)
+* skk-process-okuri-early:      送りあり変換の変換開始のタイミング.  (line   8)
+* skk-process-okuri-early:      送りありエントリのブロック形式.  (line  27)
+* skk-record-file:              変換及び個人辞書に関する統計.  (line  17)
+* skk-romaji-*-by-hepburn:      領域一括変換.           (line  79)
+* skk-rom-kana-base-rule-list:  ■モードにおける文字変換.  (line   8)
+* skk-rom-kana-base-rule-list:  Q.3-4 skk-input-vector と skk-roma-kana-a が見当たりませんが。.  (line   5)
+* skk-rom-kana-rule-list:       ■モードにおける文字変換.  (line  10)
+* skk-rom-kana-rule-list:       対になる文字列の一括入力.  (line  37)
+* skk-rom-kana-rule-list:       Q.3-4 skk-input-vector と skk-roma-kana-a が見当たりませんが。.  (line   5)
+* skk-search-excluding-word-pattern-function: 英単語をあいまいに変換して取り出す.  (line   5)
+* skk-search-prog-list:         複数辞書の検索方法.     (line   5)
+* skk-search-prog-list:         Q.3-5 検索する辞書を増やしたいのですが。.  (line   5)
+* skk-search-prog-list:         Q.5-3 市販の CD-ROM 辞書やネットワークの辞書サーバが利用できますか?.  (line   5)
+* skk-self-insert-non-undo-count: 1回の取り消し操作(undo)の対象.  (line   5)
+* skk-server-host:              辞書サーバを使いたいときの設定.  (line  14)
+* skk-server-inhibit-startup-server: サーバ関連.        (line  36)
+* skk-server-inhibit-startup-server: 辞書サーバを使いたいときの設定.  (line  22)
+* skk-server-jisyo:             辞書サーバを使いたいときの設定.  (line  45)
+* skk-server-load-hook:         ユーザーオプションの設定方法.  (line  62)
+* skk-server-portnum:           辞書サーバを使いたいときの設定.  (line  19)
+* skk-server-prog:              辞書サーバを使いたいときの設定.  (line  40)
+* skk-server-remote-shell-program: サーバ関連.          (line  46)
+* skk-server-report-response:   サーバ関連.             (line  29)
+* skk-servers-list:             サーバ関連.             (line   8)
+* skk-show-annotation:          辞書のアノテーション(註釈).  (line   5)
+* skk-show-candidates-always-pop-to-buffer: DDSKK 12 からの変更点.  (line  58)
+* skk-show-inline:              DDSKK 12 からの変更点.  (line  83)
+* skk-show-tooltip:             DDSKK 12 からの変更点.  (line  91)
+* skk-special-midashi-char-list: 接頭辞・接尾辞.        (line  95)
+* skk-study-associates-number:  変換の学習.             (line   5)
+* skk-study-backup-file:        変換の学習.             (line   5)
+* skk-study-check-alist-format: 変換の学習.             (line   5)
+* skk-study-file:               変換の学習.             (line   5)
+* skk-study-first-candidate:    変換の学習.             (line   5)
+* skk-study-max-distance:       変換の学習.             (line   5)
+* skk-study-search-times:       変換の学習.             (line   5)
+* skk-study-sort-saving:        変換の学習.             (line   5)
+* skk-treat-candidate-appearance-function: DDSKK 12 からの変更点.  (line  43)
+* skk-tut-file:                 チュートリアル.         (line   6)
+* skk-tut-file:                 Q.3-8 チュートリアルが起動できません。.  (line  19)
+* skk-use-color-cursor:         入力モードを示すカーソル色に関する設定.  (line   8)
+* skk-use-face:                 ▼モードにおける変換候補のハイライト表示.  (line   8)
+* skk-use-look:                 英単語の補完.           (line   5)
+* skk-use-look:                 Q.5-2 abbrev モードでもっと英単語を利用した変換ができませんか?.  (line   5)
+* skk-use-numeric-conversion:   数値変換.               (line 125)
+* skk-use-numeric-conversion:   DDSKK 12 からの変更点.  (line  64)
+* skk-use-viper:                VIP/VIPERとの併用.      (line   8)
+* tex-mode-hook:                対になる文字列の一括入力.  (line  76)
+* yatex-mode:                   対になる文字列の一括入力.  (line  62)
+
+
+
+File: skk.info, Node: 関数索引, Next: キー索引, Prev: 変数索引, Up: Top
+
+関数索引
+********
+
+
+* Menu:
+
+* convert-standard-filename:    ユーザーオプションの設定方法.  (line  23)
+* eval-after-load:              ユーザーオプションの設定方法.  (line  57)
+* fundamental-mode:             辞書バッファのメジャーモード.  (line   5)
+* isearch-backward-regexp:      間に空白等を含む文字列の検索.  (line  26)
+* isearch-forward-regexp:       間に空白等を含む文字列の検索.  (line  20)
+* save-some-buffers:            辞書バッファのbuffer-file-name.  (line   5)
+* self-insert-command:          1回の取り消し操作(undo)の対象.  (line   5)
+* skk-abbrev-comma:             1回の取り消し操作(undo)の対象.  (line   5)
+* skk-abbrev-period:            1回の取り消し操作(undo)の対象.  (line   5)
+* skk-annotation-add:           辞書のアノテーション(註釈).  (line   5)
+* skk-annotation-function:      辞書のアノテーション(註釈).  (line   5)
+* skk-annotation-kill:          辞書のアノテーション(註釈).  (line   5)
+* skk-annotation-remove:        辞書のアノテーション(註釈).  (line   5)
+* skk-annotation-update-jisyo-format: 辞書のアノテーション(註釈).  (line   5)
+* skk-calc:                     プログラム実行変換.     (line   5)
+* skk-count-jisyo-candidates:   辞書候補数の数えあげ.   (line   5)
+* skk-gyakubiki-katakana-message: 領域一括変換.         (line  94)
+* skk-gyakubiki-katakana-region: 領域一括変換.          (line  53)
+* skk-gyakubiki-message:        領域一括変換.           (line  92)
+* skk-gyakubiki-region:         領域一括変換.           (line  30)
+* skk-hiragana-region:          領域一括変換.           (line  11)
+* skk-hurigana-katakana-message: 領域一括変換.          (line  98)
+* skk-hurigana-katakana-region: 領域一括変換.           (line  71)
+* skk-hurigana-message:         領域一括変換.           (line  96)
+* skk-hurigana-region:          領域一括変換.           (line  61)
+* skk-insert:                   1回の取り消し操作(undo)の対象.  (line   5)
+* skk-jisx0208-latin-insert:    1回の取り消し操作(undo)の対象.  (line   5)
+* skk-jisx0208-latin-region:    領域一括変換.           (line  26)
+* skk-kana-input:               1回の取り消し操作(undo)の対象.  (line   5)
+* skk-katakana-region:          領域一括変換.           (line  16)
+* skk-kill-emacs-without-saving-jisyo: 辞書の保存.      (line  16)
+* skk-latin-region:             領域一括変換.           (line  21)
+* skk-lookup-search:            Q.5-3 市販の CD-ROM 辞書やネットワークの辞書サーバが利用できますか?.  (line   5)
+* skk-lookup-search:            skk-lookup.             (line   5)
+* skk-make-face:                ▼モードにおける変換候補のハイライト表示.  (line  25)
+* skk-obsolete-check-all-files: 古い設定のチェック.     (line   8)
+* skk-okuri-search:             辞書検索のための関数.   (line  43)
+* skk-romaji-message:           領域一括変換.           (line 100)
+* skk-romaji-region:            領域一括変換.           (line  79)
+* skk-search-jisyo-file:        辞書検索のための関数.   (line  31)
+* skk-search-kakutei-jisyo-file: 確定変換とその取り消し.  (line   6)
+* skk-search-kakutei-jisyo-file: 辞書検索のための関数.  (line  11)
+* skk-search-server:            辞書検索のための関数.   (line  54)
+* skk-search-small-dic:         複数辞書の検索方法.     (line   5)
+* skk-search-small-dic:         DDSKK のインストール.   (line   5)
+* skk-set-henkan-point:         1回の取り消し操作(undo)の対象.  (line   5)
+* skk-tutorial:                 チュートリアル.         (line   6)
+
+
+
+File: skk.info, Node: キー索引, Prev: 関数索引, Up: Top
+
+キー索引
+********
+
+
+* Menu:
+
+* \:                            漢字コードまたはメニューによる文字入力.  (line   6)
+* $:                            漢字コードを知る方法.   (line   5)
+* /:                            全英文字の一時的入力.   (line   5)
+* @:                            今日の日付の入力.       (line   5)
+* ,:                            Q.5-2 abbrev モードでもっと英単語を利用した変換ができませんか?.  (line   5)
+* .:                            Q.5-2 abbrev モードでもっと英単語を利用した変換ができませんか?.  (line   5)
+* `,':                          見出し語の補完.         (line  14)
+* `.':                          見出し語の補完.         (line  14)
+* BS:                           ▼モードでのBS.         (line   5)
+* C-g:                          送りあり変換中のC-g.    (line   5)
+* C-g:                          ▽モードを抜ける方法.   (line   6)
+* C-j:                          確定動作を行うキー.     (line   5)
+* C-j:                          ▽モードを抜ける方法.   (line   6)
+* C-q:                          全英文字の一時的入力.   (line   5)
+* C-q C-j:                      改行文字を含む辞書登録.  (line   5)
+* C-r:                          skk-isearchの操作性.    (line  17)
+* C-s:                          skk-isearchの操作性.    (line  17)
+* C-u -1 C-x j:                 SKKオートフィルモード.  (line  16)
+* C-u C-r:                      間に空白等を含む文字列の検索.  (line  26)
+* C-u C-s:                      間に空白等を含む文字列の検索.  (line  20)
+* C-u C-x j:                    SKKオートフィルモード.  (line  12)
+* C-u SPC:                      カタカナの見出し語.     (line   5)
+* C-u TAB:                      見出し語の補完.         (line  71)
+* C-x C-c:                      個人辞書の保存動作.     (line   5)
+* C-x C-c:                      辞書の保存.             (line   5)
+* C-x C-j:                      起動と終了.             (line   5)
+* C-x C-j:                      送りあり変換の変換開始のタイミング.  (line   5)
+* C-x j:                        起動と終了.             (line   5)
+* C-x j:                        送りあり変換の変換開始のタイミング.  (line   5)
+* C-x j:                        SKKオートフィルモード.  (line   5)
+* M-- C-x j:                    SKKオートフィルモード.  (line  16)
+* M-1 C-x j:                    SKKオートフィルモード.  (line  12)
+* M-C-r:                        間に空白等を含む文字列の検索.  (line  26)
+* M-C-r:                        skk-isearchの操作性.    (line  17)
+* M-C-s:                        間に空白等を含む文字列の検索.  (line  20)
+* M-C-s:                        skk-isearchの操作性.    (line  17)
+* M-Q:                          ポイントを戻して▽モードへ.  (line   9)
+* M-SPC:                        見出し語を補完しながら▼モードへ.  (line   5)
+* M-x isearch-backward-regexp:  間に空白等を含む文字列の検索.  (line  26)
+* M-x isearch-forward-regexp:   間に空白等を含む文字列の検索.  (line  20)
+* M-x skk-count-jisyo-candidates: 辞書候補数の数えあげ.  (line   5)
+* M-x skk-gyakubiki-katakana-message: 領域一括変換.     (line  94)
+* M-x skk-gyakubiki-katakana-region: 領域一括変換.      (line  53)
+* M-x skk-gyakubiki-message:    領域一括変換.           (line  92)
+* M-x skk-gyakubiki-region:     領域一括変換.           (line  30)
+* M-x skk-hiragana-region:      領域一括変換.           (line  11)
+* M-x skk-hurigana-katakana-message: 領域一括変換.      (line  98)
+* M-x skk-hurigana-katakana-region: 領域一括変換.       (line  71)
+* M-x skk-hurigana-message:     領域一括変換.           (line  96)
+* M-x skk-hurigana-region:      領域一括変換.           (line  61)
+* M-x skk-hurigana-region:      領域一括変換.           (line  79)
+* M-x skk-jisx0208-latin-region: 領域一括変換.          (line  26)
+* M-x skk-katakana-region:      領域一括変換.           (line  16)
+* M-x skk-latin-region:         領域一括変換.           (line  21)
+* M-x skk-romaji-message:       領域一括変換.           (line 100)
+* M-x skk-tutorial:             チュートリアル.         (line   6)
+* Q:                            後から▽モードに入る方法.  (line   5)
+* q:                            ひらがな/カタカナの一時的入力.  (line   5)
+* TAB:                          見出し語の補完.         (line   6)
+
