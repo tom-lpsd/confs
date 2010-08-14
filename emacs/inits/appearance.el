@@ -7,7 +7,7 @@
 (show-paren-mode 1)
 (global-hl-line-mode 1)
 (setq initial-frame-alist
-      '((top . 0) (left . 0) (width . 80) (height . 47)))
+      '((top . 0) (left . 0) (width . 270) (height . 64)))
 (when (require 'color-theme nil t)
   (color-theme-initialize)
   (color-theme-parus))
