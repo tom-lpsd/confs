@@ -1,3 +1,4 @@
+;; (install-elisp "http://github.com/jochu/clojure-mode/raw/master/clojure-mode.el")
 (require 'clojure-mode)
 
 (defalias 'perl-mode 'cperl-mode)
