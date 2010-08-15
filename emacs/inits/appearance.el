@@ -6,8 +6,24 @@
 (transient-mark-mode 1)
 (show-paren-mode 1)
 (global-hl-line-mode 1)
-(setq initial-frame-alist
-      '((top . 0) (left . 0) (width . 270) (height . 64)))
 (when (require 'color-theme nil t)
   (color-theme-initialize)
   (color-theme-parus))
+
+;; フォントサイズの変更をC-+, C--で
+(defun sacha/increase-font-size ()
+  (interactive)
+  (set-face-attribute 'default
+                      nil
+                      :height
+                      (ceiling (* 1.10
+                                  (face-attribute 'default :height)))))
+(defun sacha/decrease-font-size ()
+  (interactive)
+  (set-face-attribute 'default
+                      nil
+                      :height
+                      (floor (* 0.9
+                                  (face-attribute 'default :height)))))
+(global-set-key (kbd "C-+") 'sacha/increase-font-size)
+(global-set-key (kbd "C--") 'sacha/decrease-font-size)

@@ -12,3 +12,7 @@
 
 (setq default-input-method nil)
 (load "skk-setting" nil t nil)
+
+(setq initial-frame-alist
+      '((top . 0) (left . 0) (width . 238) (height . 60)
+	(font . "-apple-monaco-medium-r-normal--13-130-72-72-m-130-iso10646-1")))
