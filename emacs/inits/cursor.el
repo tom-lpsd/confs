@@ -5,3 +5,11 @@
 
 ;;Shiftカーソルでウィンドウ間移動．
 (windmove-default-keybindings)
+
+(defun kill-backward-dwim ()
+  (interactive)
+  (if mark-active
+    (kill-region (mark) (point))
+    (backward-kill-word 1)))
+
+(define-key global-map (kbd "C-w") #'kill-backward-dwim)
