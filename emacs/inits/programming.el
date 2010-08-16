@@ -27,3 +27,5 @@
 		("\\.pfc$" . lisp-mode)
 		("\\.oct$" . octave-mode)
                 ) auto-mode-alist))
+
+(setq lisp-indent-offset 2)
