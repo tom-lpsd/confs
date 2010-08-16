@@ -10,6 +10,12 @@
       cperl-close-paren-offset -4
       cperl-indent-parens-as-block t)
 
+(defun force-space-indent ()
+  (setq indent-tabs-mode nil)
+  (setq tab-width nil))
+
+(add-hook 'cperl-mode-hook #'force-space-indent)
+
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 (add-hook 'haskell-mode-hook 'font-lock-mode)
