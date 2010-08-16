@@ -21,12 +21,12 @@
 
 (defun switch-to-previous-buffer ()
   (interactive)
-  (let ((bl (buffer-list)))
+  (let ((original-buffer-list (buffer-list)))
     (modify-frame-parameters nil
-			     (list (cons 'buffer-list (reverse (buffer-list)))))
+      (list (cons 'buffer-list (reverse (buffer-list)))))
     (let ((next (other-buffer)))
       (modify-frame-parameters nil
-			       (list (cons 'buffer-list bl)))
+	(list (cons 'buffer-list original-buffer-list)))
       (switch-to-buffer next))))
 
 (global-set-key (kbd "C-x C-n") #'switch-to-next-buffer)
