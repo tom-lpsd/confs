@@ -15,8 +15,9 @@
 
 (defun switch-to-next-buffer ()
   (interactive)
-  (bury-buffer nil)
-  (switch-to-buffer (other-buffer)))
+  (let ((next (other-buffer)))
+    (bury-buffer nil)
+    (switch-to-buffer next)))
 
 (defun switch-to-previous-buffer ()
   (interactive)
@@ -30,11 +31,3 @@
 
 (global-set-key (kbd "C-x C-n") #'switch-to-next-buffer)
 (global-set-key (kbd "C-x C-p") #'switch-to-previous-buffer)
-
-(defun rotate-list-left (xs)
-  (let ((new (copy-sequence (cdr xs))))
-    (append new (list (car xs)))))
-
-(defun rotate-list-right (xs)
-  (let ((new (copy-sequence (butlast xs))))
-    (cons (car (last xs)) new)))
