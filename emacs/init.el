@@ -4,6 +4,7 @@
 (add-to-list 'load-path "~/.emacs.d/site-lisp/skk")
 (add-to-list 'load-path "~/.emacs.d/site-lisp/apel")
 (add-to-list 'load-path "~/.emacs.d/site-lisp/emu")
+(add-to-list 'load-path "~/.emacs.d/site-lisp/color-theme")
 (defvar inits-directory "~/.emacs.d/inits")
 
 (require 'auto-install)
