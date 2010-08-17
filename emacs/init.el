@@ -31,3 +31,4 @@
 (case system-type
   ('gnu/linux (load-elisp-directory "~/.emacs.d/linux"))
   ('darwin    (load-elisp-directory "~/.emacs.d/darwin")))
+
