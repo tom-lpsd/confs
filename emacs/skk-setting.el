@@ -2,4 +2,5 @@
 (setq skk-server-host "localhost")
 (setq skk-server-portnum 1178)
 (setq skk-jisyo-code 'utf-8-unix)
+(setq skk-egg-like-newline t)
 (global-set-key (kbd "C-x C-j") 'skk-mode)
