@@ -17,6 +17,8 @@
 ;;; 履歴の保存数を増やす
 (setq history-length 1000)
 
+(setq kill-ring-max 100)
+
 ;;; キーストロークをエコーエリアに早く表示する
 (setq echo-keystrokes 0.1)
 
