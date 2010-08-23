@@ -24,3 +24,5 @@
   (let ((input-method-function-save input-method-function))
     ad-do-it
     (setq input-method-function input-method-function-save)))
+
+(define-key isearch-mode-map (kbd "C-h") 'isearch-delete-char)
