@@ -6,3 +6,5 @@
 (setq anything-candidate-number-limit 10)
 (setq anything-quick-update t)
 (setq anything-samewindow t)
+(anything-read-string-mode '(buffer))
+
