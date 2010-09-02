@@ -9,6 +9,7 @@
 (setq key-chord-two-keys-delay 0.04)
 (key-chord-mode 1)
 (key-chord-define-global "kl" #'kill-current-buffer)
+(key-chord-define-global "ko" #'kill-other-buffer)
 (key-chord-define emacs-lisp-mode-map "df" 'describe-function)
 (key-chord-define-global " n" #'switch-to-next-buffer)
 (key-chord-define-global " p" #'switch-to-previous-buffer)
@@ -16,6 +17,7 @@
 (require 'space-chord)
 (space-chord-define-global "f" #'find-file)
 (space-chord-define-global "j" #'toggle-input-method)
+(space-chord-define-global "s" #'svn-status)
 
 (defadvice toggle-input-method (around toggle-input-method-around activate)
   (let ((input-method-function-save input-method-function))

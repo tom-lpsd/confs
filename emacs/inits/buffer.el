@@ -6,6 +6,12 @@
   (interactive)
   (kill-buffer nil))
 
+(defun kill-other-buffer ()
+  (interactive)
+  (save-window-excursion
+    (other-window 1)
+    (kill-current-buffer)))
+
 (global-set-key (kbd "C-x C-b") 'buffer-menu)
 
 (defun switch-to-next-buffer ()
