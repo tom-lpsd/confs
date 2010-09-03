@@ -3,8 +3,7 @@
 (global-set-key (kbd "C-x b") #'anything-buffers+)
 (global-set-key (kbd "M-y") #'anything-show-kill-ring)
 (define-key anything-map (kbd "C-h") 'delete-backward-char)
-(setq anything-candidate-number-limit 10)
+(setq anything-candidate-number-limit 20)
 (setq anything-quick-update t)
 (setq anything-samewindow t)
 (anything-read-string-mode '(buffer))
-
