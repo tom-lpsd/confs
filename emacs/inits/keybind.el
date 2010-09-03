@@ -1,7 +1,5 @@
 (global-set-key (kbd "C-h") 'delete-backward-char)
-(global-set-key (kbd "C-,") 'recentf-open-files)
 (global-set-key (kbd "C-x C-m") 'execute-extended-command)
-
 (require 'sequential-command-config)
 (sequential-command-setup-keys)
 
