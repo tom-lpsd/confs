@@ -6,6 +6,9 @@
 (setq viewer-modeline-color-view "orange")
 (viewer-change-modeline-color-setup)
 
+(define-key view-mode-map (kbd "N") 'View-search-last-regexp-backward)
+(define-key view-mode-map (kbd "?") 'View-search-regexp-backward)
+(define-key view-mode-map (kbd "G") 'end-of-buffer)
 (define-key view-mode-map (kbd "b") 'View-scroll-page-backward)
 (define-key view-mode-map (kbd "f") 'View-scroll-page-forward)
 (define-key view-mode-map (kbd "h") 'backward-char)
