@@ -1,4 +1,5 @@
 (require 'anything-startup)
+(require 'anything-subversion)
 (global-set-key (kbd "C-]") #'anything)
 (global-set-key (kbd "C-,") #'abort-recursive-edit)
 (global-set-key (kbd "C-x b") #'anything-buffers+)

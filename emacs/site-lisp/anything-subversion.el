@@ -12,14 +12,13 @@
   :group 'anything-subversion)
 
 (defun anything-subversion-cat (url)
+  (interactive "sURL: ")
   (with-current-buffer (get-buffer-create url)
     (save-excursion
       (call-process svn-program nil t t "cat" url))
     (if (re-search-forward "^svn: warning:.*refers to a directory$" nil t)
-	(progn
-	  (kill-buffer nil)
-	  nil)
-	(switch-to-buffer (current-buffer)))))
+	(progn (kill-buffer nil) nil)
+      (switch-to-buffer (current-buffer)))))
 
 (defun anything-subversion-list (url)
   (set-mark (point))
@@ -33,10 +32,9 @@
 	  (switch-to-buffer (get-buffer-create url))
 	  (anything-subversion-list url))
       (let ((anything-subversion-repository-urls (list url)))
-	(anything-other-buffer
-	 '(anything-subversion) (concat "*anything subversion:" url "*"))))))
+	(anything-subversion)))))
 
-(setq anything-subversion
+(defvar anything-c-source-subversion
       '((name . "anything subversion repositories")
 	(init . (lambda ()
 		  (with-current-buffer (anything-candidate-buffer 'global)
@@ -45,6 +43,9 @@
 	(candidates-in-buffer)
 	(action ("Open" . anything-subversion-open))))
 
-;; (anything 'anything-subversion)
+(defun anything-subversion ()
+  (interactive)
+  (anything-other-buffer '(anything-c-source-subversion)
+			 "*anything subversion*"))
 
 (provide 'anything-subversion)
