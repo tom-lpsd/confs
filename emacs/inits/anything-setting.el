@@ -9,3 +9,6 @@
 (setq anything-quick-update t)
 (setq anything-samewindow t)
 (anything-read-string-mode '(buffer))
+
+;; (install-elisp-from-emacswiki "anything-etags.el")
+(require 'anything-etags)
