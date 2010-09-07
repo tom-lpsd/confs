@@ -16,7 +16,8 @@
   (with-current-buffer (get-buffer-create url)
     (save-excursion
       (call-process svn-program nil t t "cat" url))
-    (if (re-search-forward "^svn: warning:.*refers to a directory$" nil t)
+    (if (or (re-search-forward "^svn: warning:.*refers to a directory$" nil t)
+	    (re-search-forward "^svn: 警告: URL .* はディレクトリを指しています$" nil t))
 	(progn (kill-buffer nil) nil)
       (switch-to-buffer (current-buffer)))))
 
