@@ -1,0 +1,19 @@
+startup_message off
+escape ^t^t
+hardstatus alwayslastline "[%02c] %`%-w%{=b bw}%n %t%{-}%+w"
+bind -c REGION 2 split
+bind -c REGION 1 only
+bind -c REGION 0 remove
+bind -c REGION o focus
+bind -c REGION ^ resize
+bind x command -c REGION
+bind ^U encoding utf8
+bind ^E encoding euc
+bind ^J encoding SJIS
+screen 0
+title main
+screen 1
+title sub
+screen 2
+title etc
+select 0
