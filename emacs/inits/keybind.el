@@ -4,7 +4,7 @@
 (sequential-command-setup-keys)
 
 (require 'key-chord)
-(setq key-chord-two-keys-delay 0.04)
+(setq key-chord-two-keys-delay 0.02)
 (key-chord-mode 1)
 (key-chord-define-global "kl" #'kill-current-buffer)
 (key-chord-define-global "ko" #'kill-other-buffer)
