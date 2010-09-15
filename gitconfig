@@ -1,0 +1,7 @@
+[user]
+	name = Tom Tsuruhara
+	email = tom.lpsd@gmail.com
+[color]
+	ui = true
+[core]
+	pager = lv -c
