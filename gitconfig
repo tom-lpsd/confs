@@ -5,3 +5,8 @@
 	ui = true
 [core]
 	pager = lv -c
+[alias]
+	st = status
+	ci = commit
+[color "status"]
+	changed = reverse
