@@ -8,5 +8,6 @@
 [alias]
 	st = status
 	ci = commit
+	co = checkout
 [color "status"]
 	changed = reverse
