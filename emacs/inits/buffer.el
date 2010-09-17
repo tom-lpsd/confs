@@ -12,6 +12,7 @@
     (other-window 1)
     (kill-current-buffer)))
 
+(global-set-key (kbd "C-'") 'kill-current-buffer)
 (global-set-key (kbd "C-x C-b") 'buffer-menu)
 
 (defun switch-to-next-buffer ()
