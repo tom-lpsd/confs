@@ -16,6 +16,7 @@
 (space-chord-define-global "f" #'find-file)
 (space-chord-define-global "j" #'toggle-input-method)
 (space-chord-define-global "s" #'svn-status)
+(space-chord-define-global "g" #'magit-status)
 
 (defadvice toggle-input-method (around toggle-input-method-around activate)
   (let ((input-method-function-save input-method-function))
