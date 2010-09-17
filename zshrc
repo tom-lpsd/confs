@@ -129,3 +129,8 @@ nprom () {
 nprom
 
 export EDITOR=vim
+
+ZSH_BASE_DIR=$(dirname $(readlink $HOME/.zshrc))
+if [ -r "$ZSH_BASE_DIR/zsh/$(hostname)" ]; then
+    . $ZSH_BASE_DIR/zsh/$(hostname)
+fi
