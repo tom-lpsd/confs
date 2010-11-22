@@ -36,4 +36,7 @@
 (setq ruby-indent-level 2)
 (setq ruby-indent-tabs-mode nil)
 
+(when (boundp 'show-trailing-whitespace)
+  (setq-default show-trailing-whitespace t))
+
 (require 'mixi-mode "mixi-mode" t)
