@@ -10,6 +10,7 @@
 (when (require 'color-theme nil t)
   (color-theme-initialize)
   (color-theme-parus))
+(fringe-mode 0)
 
 ;; フォントサイズの変更をC-+, C--で
 (defun sacha/increase-font-size ()
