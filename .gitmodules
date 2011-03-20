@@ -1,3 +1,0 @@
-[submodule "emacs/site-lisp/slime"]
-	path = emacs/site-lisp/slime
-	url = git://github.com/nablaone/slime.git
