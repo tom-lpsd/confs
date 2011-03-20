@@ -4,6 +4,6 @@ alias ll='ls -lG'
 alias la='ls -aG'
 
 MANPATH=$MANPATH:/opt/local/man
-PATH="$HOME/local/glassfishv3/bin:/opt/local/bin:$PATH"
+PATH="$HOME/local/bin:$HOME/local/glassfishv3/bin:/opt/local/bin:$PATH"
 
 export PATH MANPATH
