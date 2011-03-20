@@ -11,3 +11,5 @@
 	co = checkout
 [color "status"]
 	changed = reverse
+[github]
+	user = tom-lpsd
