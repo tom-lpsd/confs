@@ -16,8 +16,11 @@
 (auto-install-compatibility-setup)
 (setq ediff-window-setup-function 'ediff-setup-window-plain)
 
-(when (load (expand-file-name "~/.emacs.d/elpa/package.el"))
-  (package-initialize))
+;; curl -O https://github.com/technomancy/emacs-starter-kit/raw/master/package.el
+(when (load (expand-file-name "~/.emacs.d/site-lisp/package.el"))
+  (package-initialize)
+  (add-to-list 'package-archives
+	       '("technomancy" . "http://repo.technomancy.us/emacs/") t))
 
 (defun file-name-remove-extension (name)
   (replace-regexp-in-string "\\(.*\\)\\.[^.]*$" "\\1" name))
