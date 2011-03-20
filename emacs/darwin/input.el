@@ -1,2 +1,2 @@
-(setq default-input-method nil)
-(load "skk-setting" nil t nil)
+(setq default-input-method "japanese-skk")
+(require 'skk-setup)
