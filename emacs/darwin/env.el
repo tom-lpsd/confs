@@ -1,0 +1,1 @@
+(setq gosh-program-name "/Users/tom/local/gauche/bin/gosh -i")
