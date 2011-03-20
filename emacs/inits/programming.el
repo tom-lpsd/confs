@@ -1,6 +1,19 @@
-;; (install-elisp "http://github.com/jochu/clojure-mode/raw/master/clojure-mode.el")
+;; clojure
+(require 'paredit)
 (require 'clojure-mode)
 
+;; slime
+(eval-after-load "slime"
+  '(labels ((paredit-mode-enable () (paredit-mode 1)))
+     (slime-setup '(slime-repl))
+     (add-hook 'slime-mode-hook 'paredit-mode-enable)
+     (add-hook 'slime-repl-mode-hook 'paredit-mode-enable)
+     (setq slime-protocol-version 'ignore)))
+
+(require 'slime)
+(slime-setup)
+
+;; perl
 (defalias 'perl-mode 'cperl-mode)
 (setq indent-tabs-mode nil
       cperl-hairy nil
