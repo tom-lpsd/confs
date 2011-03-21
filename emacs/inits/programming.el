@@ -8,6 +8,7 @@
      (slime-setup '(slime-repl))
      (add-hook 'slime-mode-hook 'paredit-mode-enable)
      (add-hook 'slime-repl-mode-hook 'paredit-mode-enable)
+     (add-hook 'slime-repl-mode-hook 'clojure-mode-font-lock-setup)
      (setq slime-protocol-version 'ignore)))
 
 (require 'slime)
