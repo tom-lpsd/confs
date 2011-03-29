@@ -3,6 +3,8 @@
 (require 'clojure-mode)
 
 ;; slime
+(setq slime-net-coding-system 'utf-8-unix)
+
 (eval-after-load "slime"
   '(labels ((paredit-mode-enable () (paredit-mode 1)))
      (slime-setup '(slime-repl))
@@ -10,6 +12,8 @@
      (add-hook 'slime-repl-mode-hook 'paredit-mode-enable)
      (add-hook 'slime-repl-mode-hook 'clojure-mode-font-lock-setup)
      (setq slime-protocol-version 'ignore)))
+
+(define-key paredit-mode-map (kbd "C-h") 'paredit-backward-delete)
 
 (require 'slime)
 (slime-setup)
