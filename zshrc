@@ -18,7 +18,7 @@ alias rmi='rm -i'
 alias la='ls -a'
 alias ls='ls -F --color'
 alias ll='ls -lF'
-alias screen='screen -h 1000 -R'
+alias screen='screen -h 10000 -R'
 
 if which lv > /dev/null 2>&1; then
     export PAGER=lv
