@@ -2,6 +2,16 @@
 (require 'paredit)
 (require 'clojure-mode)
 
+;; haskell
+(add-to-list 'load-path "~/.emacs.d/site-lisp/haskell-mode-2.8.0")
+(add-to-list 'load-path "~/.emacs.d/site-lisp/ghc-mod")
+(load "haskell-site-file")
+(autoload 'ghc-init "ghc" nil t)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+(add-hook 'haskell-mode-hook (lambda () (ghc-init)))
+(add-to-list 'exec-path "~/.cabal/bin")
+
 ;; slime
 (setq slime-net-coding-system 'utf-8-unix)
 
