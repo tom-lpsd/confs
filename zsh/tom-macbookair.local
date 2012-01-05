@@ -1,5 +1,5 @@
 alias ls='ls -FG'
-export PATH=$HOME/.cabal/bin:$HOME/opt/bin:/usr/local/bin:/usr/local/Cellar/ruby/1.9.2-p290/bin:$HOME/.cabal/bin:$PATH
+export PATH=$HOME/.cabal/bin:$HOME/opt/bin:/usr/local/bin:$HOME/.cabal/bin:$PATH
 export JAVA_HOME=`/usr/libexec/java_home`
 . ~/perl5/perlbrew/etc/bashrc
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
