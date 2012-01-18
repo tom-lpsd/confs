@@ -54,6 +54,8 @@
 		("\\.cgi$" . perl-mode)
 		("\\.pfc$" . lisp-mode)
 		("\\.oct$" . octave-mode)
+		("\\.coffee$" . coffee-mode)
+		("Cakefile$" . coffee-mode)
                 ) auto-mode-alist))
 
 ;; (install-elisp "http://github.com/yoshiki/yaml-mode/raw/master/yaml-mode.el")
@@ -143,3 +145,5 @@
 (put 'guard 'scheme-indent-function 1)
 
 (require 'mixi-mode "mixi-mode" t)
+
+(require 'coffee-mode)
