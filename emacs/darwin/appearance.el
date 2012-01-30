@@ -6,8 +6,8 @@
 		(alpha . (95 95))
 		(inactive-alpha . 0.50)) default-frame-alist))
 
-(setq initial-frame-alist
-      '((top . 0) (left . 0) (width . 238) (height . 60)))
+;; (setq initial-frame-alist
+;;       '((top . 0) (left . 0) (width . 238) (height . 60)))
 
 (when (>= emacs-major-version 23)
  (set-face-attribute 'default nil

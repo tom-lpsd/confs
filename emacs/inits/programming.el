@@ -147,3 +147,5 @@
 (require 'mixi-mode "mixi-mode" t)
 
 (require 'coffee-mode)
+(autoload 'scss-mode "scss-mode")
+(add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
