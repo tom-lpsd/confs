@@ -9,6 +9,7 @@
 	st = status
 	ci = commit
 	co = checkout
+	br = branch
 [color "status"]
 	changed = reverse
 [github]
