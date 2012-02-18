@@ -19,6 +19,7 @@ set hidden
 set hlsearch
 set incsearch
 set cursorline
+set expandtab
 
 set laststatus=2
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']
