@@ -81,6 +81,8 @@
    (get-buffer-create "*scheme*"))
   (run-scheme gosh-program-name))
 
+(add-hook 'scheme-mode-hook 'paredit-mode)
+
 (define-key global-map "\C-cS" 'scheme-other-window)
 
 (put 'and-let* 'scheme-indent-function 1)

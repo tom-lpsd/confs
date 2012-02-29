@@ -1,4 +1,4 @@
-(setq gosh-program-name "/Users/tom/local/gauche/bin/gosh -i")
+(setq gosh-program-name "/usr/local/bin/gosh -i")
 (setenv "PATH" (concat (getenv "PATH") ":/Users/tom/opt/bin"))
 (setq haskell-program-name "/usr/local/bin/ghci")
 (require 'rvm)
