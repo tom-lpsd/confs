@@ -149,5 +149,7 @@
 (require 'mixi-mode "mixi-mode" t)
 
 (require 'coffee-mode)
+(add-hook 'coffee-mode-hook (lambda () (setq tab-width 2)))
+
 (autoload 'scss-mode "scss-mode")
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
