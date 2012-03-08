@@ -153,3 +153,10 @@
 
 (autoload 'scss-mode "scss-mode")
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
+
+(defun js-indent-hook ()
+  (setq js-indent-level 4
+	js-expr-indent-offset 4
+	indent-tabs-mode nil))
+
+(add-hook 'js-mode-hook 'js-indent-hook)
