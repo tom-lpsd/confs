@@ -14,7 +14,8 @@
 (add-to-list 'load-path auto-install-directory)
 (auto-install-update-emacswiki-package-name t)
 (auto-install-compatibility-setup)
-(setq ediff-window-setup-function 'ediff-setup-window-plain)
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+(setq ediff-split-window-function 'split-window-vertically)
 
 ;; curl -O https://github.com/technomancy/emacs-starter-kit/raw/master/package.el
 (when (load (expand-file-name "~/.emacs.d/site-lisp/package.el"))
