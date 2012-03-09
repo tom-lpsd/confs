@@ -7,12 +7,7 @@
 (setq key-chord-two-keys-delay 0.05)
 (key-chord-mode 1)
 (key-chord-define emacs-lisp-mode-map "df" 'describe-function)
-
-(require 'space-chord)
-(space-chord-define-global "f" #'find-file)
-(space-chord-define-global "j" #'toggle-input-method)
-(space-chord-define-global "s" #'svn-status)
-(space-chord-define-global "g" #'magit-status)
+(key-chord-define global-map "mg" 'magit-status)
 
 (defadvice toggle-input-method (around toggle-input-method-around activate)
   (let ((input-method-function-save input-method-function))
