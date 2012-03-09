@@ -1,5 +1,5 @@
 (global-set-key (kbd "C-h") 'delete-backward-char)
-(global-set-key (kbd "C-x C-m") 'execute-extended-command)
+(global-set-key (kbd "C-x C-x") 'execute-extended-command)
 (require 'sequential-command-config)
 (sequential-command-setup-keys)
 
