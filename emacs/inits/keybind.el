@@ -4,7 +4,7 @@
 (sequential-command-setup-keys)
 
 (require 'key-chord)
-(setq key-chord-two-keys-delay 0.02)
+(setq key-chord-two-keys-delay 0.05)
 (key-chord-mode 1)
 (key-chord-define emacs-lisp-mode-map "df" 'describe-function)
 (key-chord-define-global " n" #'switch-to-next-buffer)
