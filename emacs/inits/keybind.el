@@ -8,6 +8,7 @@
 (key-chord-mode 1)
 (key-chord-define emacs-lisp-mode-map "df" 'describe-function)
 (key-chord-define global-map "mg" 'magit-status)
+(key-chord-define global-map "dm" 'moccur-grep-find)
 
 (defadvice toggle-input-method (around toggle-input-method-around activate)
   (let ((input-method-function-save input-method-function))

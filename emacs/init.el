@@ -39,3 +39,9 @@
   ('gnu/linux (load-elisp-directory "~/.emacs.d/linux"))
   ('darwin    (load-elisp-directory "~/.emacs.d/darwin")))
 
+(when (require 'color-moccur nil t)
+  (require 'moccur-edit)
+  (setq moccur-split-word t)
+  (add-to-list 'dmoccur-exclusion-mask "\\.DS_Store")
+  (add-to-list 'dmoccur-exclusion-mask "\\.svn")
+  (add-to-list 'dmoccur-exclusion-mask "\\.git"))
