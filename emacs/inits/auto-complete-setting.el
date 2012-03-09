@@ -1,3 +1,7 @@
 ;; (auto-install-batch "auto-complete development version")
 (require 'auto-complete-config)
 (global-auto-complete-mode 1)
+(ac-config-default)
+(setq ac-use-menu-map t)
+(define-key ac-menu-map "\C-n" 'ac-next)
+(define-key ac-menu-map "\C-p" 'ac-previous)
