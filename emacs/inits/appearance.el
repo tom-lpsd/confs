@@ -9,7 +9,7 @@
 (global-hl-line-mode 1)
 (when (require 'color-theme nil t)
   (color-theme-initialize)
-  (color-theme-parus))
+  (color-theme-arjen))
 (fringe-mode 0)
 
 ;; フォントサイズの変更をC-+, C--で
