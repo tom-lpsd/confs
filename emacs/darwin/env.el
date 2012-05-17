@@ -3,3 +3,4 @@
 (setq haskell-program-name "/usr/local/bin/ghci")
 (require 'rvm)
 (rvm-use-default)
+(push "/usr/local/bin" exec-path)
