@@ -134,3 +134,5 @@ ZSH_BASE_DIR=$(dirname $(readlink $HOME/.zshrc))
 if [ -r "$ZSH_BASE_DIR/zsh/$(hostname)" ]; then
     . $ZSH_BASE_DIR/zsh/$(hostname)
 fi
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
