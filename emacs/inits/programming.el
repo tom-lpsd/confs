@@ -86,6 +86,7 @@
   (run-scheme gosh-program-name))
 
 (add-hook 'scheme-mode-hook 'paredit-mode)
+(add-hook 'inferior-scheme-mode-hook 'paredit-mode)
 
 (define-key global-map "\C-cS" 'scheme-other-window)
 
