@@ -59,6 +59,7 @@
 		("Rakefile$" . ruby-mode)
 		("Capfile$" . ruby-mode)
 		("Gemfile$" . ruby-mode)
+		("\\.builder$" . ruby-mode)
                 ) auto-mode-alist))
 
 ;; (install-elisp "http://github.com/yoshiki/yaml-mode/raw/master/yaml-mode.el")
