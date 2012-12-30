@@ -1,5 +1,7 @@
 ;; モードラインにバッテリー残量を表示
-(display-battery-mode t)
+(let ((load-percentage (cdadr (funcall battery-status-function))))
+  (unless (and (stringp load-percentage) (string= load-percentage "N/A"))
+    (display-battery-mode t)))
 
 (setq default-frame-alist
       (append '((active-alpha . 0.80)
