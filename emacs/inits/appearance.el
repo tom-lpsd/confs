@@ -9,7 +9,7 @@
 (global-hl-line-mode 1)
 (when (require 'color-theme nil t)
   (color-theme-initialize)
-  (color-theme-arjen))
+  (color-theme-vim-colors))
 (fringe-mode 0)
 
 ;; フォントサイズの変更をC-+, C--で
