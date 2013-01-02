@@ -17,11 +17,14 @@
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 (setq ediff-split-window-function 'split-window-horizontally)
 
-;; curl -O https://github.com/technomancy/emacs-starter-kit/raw/master/package.el
-(when (load (expand-file-name "~/.emacs.d/site-lisp/package.el"))
+(when (require 'package nil t)
   (package-initialize)
   (add-to-list 'package-archives
-	       '("technomancy" . "http://repo.technomancy.us/emacs/") t))
+	       '("melpa" . "http://melpa.milkbox.net/packages/") t)
+  (add-to-list 'package-archives
+	       '("technomancy" . "http://repo.technomancy.us/emacs/") t)
+  (add-to-list 'package-archives
+	       '("marmalade" . "http://marmalade-repo.org/packages/")))
 
 (defun file-name-remove-extension (name)
   (replace-regexp-in-string "\\(.*\\)\\.[^.]*$" "\\1" name))
