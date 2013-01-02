@@ -1,3 +1,4 @@
 alias ls="ls -FG"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 . ~/perl5/perlbrew/etc/bashrc
+export PATH=$HOME/local/bin:$PATH
