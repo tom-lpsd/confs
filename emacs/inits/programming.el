@@ -165,3 +165,5 @@
 	indent-tabs-mode nil))
 
 (add-hook 'js-mode-hook 'js-indent-hook)
+
+(require 'haml-mode)
