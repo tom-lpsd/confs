@@ -8,6 +8,7 @@
 (add-to-list 'load-path "~/.emacs.d/site-lisp/magit")
 (add-to-list 'load-path "~/.emacs.d/site-lisp/color-theme")
 (add-to-list 'load-path "~/.emacs.d/site-lisp/ddskk/lisp/skk")
+(add-to-list 'load-path "~/.emacs.d/site-lisp/slime-2013-03-12")
 (defvar inits-directory "~/.emacs.d/inits")
 
 (require 'auto-install)

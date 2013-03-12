@@ -167,3 +167,6 @@
 (add-hook 'js-mode-hook 'js-indent-hook)
 
 (require 'haml-mode)
+
+(setq inferior-lisp-program "clisp")
+
