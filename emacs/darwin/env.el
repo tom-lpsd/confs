@@ -1,6 +1,0 @@
-(setq gosh-program-name "/usr/local/bin/gosh -i")
-(setenv "PATH" (concat (getenv "PATH") ":/Users/tom/opt/bin"))
-(setq haskell-program-name "/usr/local/bin/ghci")
-(require 'rvm)
-(rvm-use-default)
-(push "/usr/local/bin" exec-path)
