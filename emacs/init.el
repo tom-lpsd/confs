@@ -64,5 +64,9 @@
 (recentf-mode)
 (setq recentf-max-saved-items 3000)
 
+(require 'package)
+(package-initialize)
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+
 (cond ((eq system-type 'gnu/linux)(load "linux"))
       ((eq system-type 'darwin) (load "darwin")))
