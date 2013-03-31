@@ -65,6 +65,7 @@
 (setq recentf-max-saved-items 3000)
 
 (require 'package)
+(setq package-user-dir (locate-user-emacs-file "packages/elpa"))
 (package-initialize)
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 
