@@ -104,9 +104,6 @@
 (key-chord-define-global "dm" #'moccur-grep-find)
 (setq key-chord-two-keys-delay 0.05)
 
-;; rvm
-(rvm-use-default)
-
 ;; paredit
 (eval-after-load 'paredit
   '(define-key paredit-mode-map (kbd "C-h") #'paredit-backward-delete))
@@ -115,3 +112,5 @@
       ((eq system-type 'darwin) (load "darwin")))
 
 (load "inits/perl")
+(load "inits/ruby")
+
