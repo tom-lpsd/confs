@@ -66,8 +66,9 @@
 
 (require 'package)
 (setq package-user-dir (locate-user-emacs-file "packages/elpa"))
-(package-initialize)
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(package-initialize)
 
 ;; Helm
 (setq enable-recursive-minibuffers t)
