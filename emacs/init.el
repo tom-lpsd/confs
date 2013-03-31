@@ -1,4 +1,5 @@
 (add-to-list 'load-path "~/.emacs.d")
+(add-to-list 'load-path "~/.emacs.d/lisp")
 
 (display-time)
 (tool-bar-mode -1)
@@ -56,6 +57,17 @@
 (global-set-key (kbd "C-z") #'line-to-top-of-window)
 
 (windmove-default-keybindings)
+
+(require 'sequential-command)
+
+(define-sequential-command seq-home
+  beginning-of-line beginning-of-buffer seq-return)
+
+(define-sequential-command seq-end
+  end-of-line end-of-buffer seq-return)
+
+(global-set-key (kbd "C-a") 'seq-home)
+(global-set-key (kbd "C-e") 'seq-end)
 
 (setq backup-inhibited t)
 (setq history-length 1000)
