@@ -107,3 +107,5 @@
 
 (cond ((eq system-type 'gnu/linux)(load "linux"))
       ((eq system-type 'darwin) (load "darwin")))
+
+(load "inits/perl")
