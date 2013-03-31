@@ -69,5 +69,10 @@
 (package-initialize)
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 
+(setq enable-recursive-minibuffers t)
+
+(global-set-key (kbd "C-]") #'helm-mini)
+(global-set-key (kbd "C-x b") #'helm-buffers-list)
+
 (cond ((eq system-type 'gnu/linux)(load "linux"))
       ((eq system-type 'darwin) (load "darwin")))
