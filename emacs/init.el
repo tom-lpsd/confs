@@ -99,5 +99,8 @@
 (key-chord-define-global "dm" #'moccur-grep-find)
 (setq key-chord-two-keys-delay 0.05)
 
+;; rvm
+(rvm-use-default)
+
 (cond ((eq system-type 'gnu/linux)(load "linux"))
       ((eq system-type 'darwin) (load "darwin")))
