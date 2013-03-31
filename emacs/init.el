@@ -73,6 +73,11 @@
 (setq history-length 1000)
 (setq kill-ring-max 100)
 
+(setq indent-tabs-mode nil)
+(setq tab-width nil)
+(when (boundp 'show-trailing-whitespace)
+  (setq-default show-trailing-whitespace t))
+
 (recentf-mode)
 (setq recentf-max-saved-items 3000)
 
