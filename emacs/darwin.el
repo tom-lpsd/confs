@@ -19,3 +19,5 @@
   (require 'battery)
   (display-battery-mode t))
 
+;; PATH for homebrew
+(add-to-list 'exec-path "/usr/local/bin")

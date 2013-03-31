@@ -108,6 +108,10 @@
 (eval-after-load 'paredit
   '(define-key paredit-mode-map (kbd "C-h") #'paredit-backward-delete))
 
+;; slime
+(setq inferior-lisp-program "clisp")
+(slime-setup)
+
 (cond ((eq system-type 'gnu/linux)(load "linux"))
       ((eq system-type 'darwin) (load "darwin")))
 
