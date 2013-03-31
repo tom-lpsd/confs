@@ -97,6 +97,7 @@
 (key-chord-define-global "df" #'describe-function)
 (key-chord-define-global "mg" #'magit-status)
 (key-chord-define-global "dm" #'moccur-grep-find)
+(setq key-chord-two-keys-delay 0.05)
 
 (cond ((eq system-type 'gnu/linux)(load "linux"))
       ((eq system-type 'darwin) (load "darwin")))
