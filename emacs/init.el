@@ -107,6 +107,10 @@
 ;; rvm
 (rvm-use-default)
 
+;; paredit
+(eval-after-load 'paredit
+  '(define-key paredit-mode-map (kbd "C-h") #'paredit-backward-delete))
+
 (cond ((eq system-type 'gnu/linux)(load "linux"))
       ((eq system-type 'darwin) (load "darwin")))
 
