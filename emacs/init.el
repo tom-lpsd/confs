@@ -81,6 +81,9 @@
 (recentf-mode)
 (setq recentf-max-saved-items 3000)
 
+(add-to-list 'load-path "~/.emacs.d/lisp/ddskk/site-lisp/skk")
+(require 'skk-setup)
+
 (require 'package)
 (setq package-user-dir (locate-user-emacs-file "packages/elpa"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
