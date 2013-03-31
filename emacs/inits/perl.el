@@ -10,3 +10,6 @@
 (add-hook 'cperl-mode-hook
 	  (lambda () (setq indent-tabs-mode nil
 			   tab-width nil)))
+
+(dolist (r '("\\.plx$" "\\.t$" "\\.cgi$"))
+  (add-to-list 'auto-mode-alist (cons r 'cperl-mode)))
