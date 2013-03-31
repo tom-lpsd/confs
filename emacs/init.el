@@ -112,6 +112,10 @@
 (setq inferior-lisp-program "clisp")
 (slime-setup)
 
+;; auto-complete
+(require 'auto-complete-config)
+(ac-config-default)
+
 (cond ((eq system-type 'gnu/linux)(load "linux"))
       ((eq system-type 'darwin) (load "darwin")))
 
