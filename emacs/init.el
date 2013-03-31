@@ -121,4 +121,4 @@
 
 (load "inits/perl")
 (load "inits/ruby")
-
+(load "inits/scheme")
