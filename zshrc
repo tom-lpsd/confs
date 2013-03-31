@@ -19,6 +19,7 @@ alias la='ls -a'
 alias ls='ls -F --color'
 alias ll='ls -lF'
 alias screen='screen -h 10000 -R'
+alias gg='git grep'
 
 if which lv > /dev/null 2>&1; then
     export PAGER=lv
