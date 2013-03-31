@@ -14,3 +14,8 @@
         (".*monaco cy-bold-.*-mac-cyrillic" . 0.9)
         (".*monaco-bold-.*-mac-roman" . 0.9)
         ("-cdac$" . 1.3)))
+
+(ignore-errors
+  (require 'battery)
+  (display-battery-mode t))
+
