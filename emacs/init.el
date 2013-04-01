@@ -1,6 +1,9 @@
 (add-to-list 'load-path "~/.emacs.d")
 (add-to-list 'load-path "~/.emacs.d/lisp")
 
+(set-language-environment "Japanese")
+(set-default-coding-systems 'utf-8)
+
 (display-time)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
