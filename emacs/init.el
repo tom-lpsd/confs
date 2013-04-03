@@ -111,6 +111,8 @@
 (eval-after-load 'paredit
   '(define-key paredit-mode-map (kbd "C-h") #'paredit-backward-delete))
 
+(add-hook 'lisp-mode-hook #'paredit-mode)
+
 ;; slime
 (setq inferior-lisp-program "clisp")
 (slime-setup)
