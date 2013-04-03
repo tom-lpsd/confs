@@ -121,6 +121,9 @@
 (require 'auto-complete-config)
 (ac-config-default)
 
+;; markdown
+(add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
+
 (cond ((eq system-type 'gnu/linux)(load "linux"))
       ((eq system-type 'darwin) (load "darwin")))
 
