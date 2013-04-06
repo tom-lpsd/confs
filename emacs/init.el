@@ -85,6 +85,7 @@
 (setq recentf-max-saved-items 3000)
 
 (add-to-list 'load-path "~/.emacs.d/lisp/ddskk/site-lisp/skk")
+(require 'dired-x)  ;; preload because dired-x take over C-x C-j binding
 (require 'skk-setup)
 
 (require 'package)
