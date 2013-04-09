@@ -2,9 +2,19 @@
 (setq mac-command-key-is-meta t)
 (setq ns-command-modifier 'meta)
 
+(set-face-attribute
+ 'default nil
+ :family "monaco"
+ :height 140)
+
 (dolist (target '(japanese-jisx0208 japanese-jisx0212))
   (set-fontset-font nil target
 		    '("Hiragino Maru Gothic Pro" . "iso10646-1")))
+
+(set-fontset-font
+ (frame-parameter nil 'font)
+ 'mule-unicode-0100-24ff
+ '("monaco" . "iso10646-1"))
 
 (setq face-font-rescale-alist
       '(("^-apple-hiragino.*" . 1.2)
