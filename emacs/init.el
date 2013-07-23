@@ -131,3 +131,5 @@
 (load "inits/perl")
 (load "inits/ruby")
 (load "inits/scheme")
+
+(add-hook 'clojure-mode-hook 'paredit-mode)
