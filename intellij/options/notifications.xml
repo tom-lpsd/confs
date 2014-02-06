@@ -19,6 +19,7 @@
     <notification groupId="Grape" />
     <notification groupId="Svn Roots Detection Errors" displayType="STICKY_BALLOON" />
     <notification groupId="Unknown Natures Detected" />
+    <notification groupId="Test Runner" displayType="NONE" />
     <toolWindow group="Git Messages" />
     <toolWindow group="FindInPath" />
   </component>
