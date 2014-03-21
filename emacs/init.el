@@ -133,3 +133,6 @@
 (load "inits/scheme")
 
 (add-hook 'clojure-mode-hook 'paredit-mode)
+
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
