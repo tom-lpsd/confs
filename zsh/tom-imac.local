@@ -1,5 +1,5 @@
 alias ls="ls -FG"
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 . ~/perl5/perlbrew/etc/bashrc
 export PATH=$HOME/local/bin:$PATH
 export GROOVY_HOME="/usr/local/opt/groovy/libexec"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
