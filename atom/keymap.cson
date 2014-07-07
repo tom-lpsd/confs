@@ -19,4 +19,4 @@
 'body':
   'ctrl-v': 'core:page-down'
   'cmd-v': 'core:page-up'
-  'ctrl-space': 'atomic-emacs:set-mark'
+  'cmd-w': 'emacs:kill-ring-save'

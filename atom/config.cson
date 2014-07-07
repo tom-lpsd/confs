@@ -19,3 +19,9 @@
     '.svn'
     '.DS_Store'
   ]
+'emacs-mode':
+  'hideTabs': false
+  'hideSidebar': false
+  'useEmacsCursor': true
+  'useFuzzyFileFinder': false
+  'useFuzzyBufferFinder': false
