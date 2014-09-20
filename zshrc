@@ -29,17 +29,6 @@ if [ -x `which vim` ]; then
     export SVN_EDITOR='vim'
 fi
 
-unsetopt promptcr
-setopt prompt_subst
-
-if [ $UID = 0 ] ; then 
-  PSCOLOR='00;04;31'
-else
-  PSCOLOR='00;04;32'
-fi
-
-PS1='%m %1~ $ '
-
 function google() {
   local str opt 
   if [ $# != 0 ]; then
@@ -117,18 +106,6 @@ if [ "$TERM" = "screen" ]; then
     chpwd
 fi
 
-nprom () {
-    setopt prompt_subst
-    local rbase=$'%{\e[33m%}[%~]%{\e[m%}' lf=$'\n'
-    local pct=$'%0(?||%18(?||%{\e[31m%}))%#%{\e[m%}'
-    RPROMPT="%9(~||$rbase)"
-    local pbase=$'%{\e[$[32+RANDOM%5]m%}%U%B%m%b'"$pct%u "
-    PROMPT="%9(~|$rbase$lf|)$pbase"
-    [[ "$TERM" = "screen" ]] && RPROMPT="[%U%~%u]"
-}
-
-nprom
-
 export EDITOR=vim
 
 ZSH_BASE_DIR=$HOME/$(dirname $(readlink $HOME/.zshrc))
@@ -136,3 +113,30 @@ if [ -r "$ZSH_BASE_DIR/zsh/$(hostname)" ]; then
     . $ZSH_BASE_DIR/zsh/$(hostname)
 fi
 
+source $HOME/.oh-my-zshrc
+
+function peco-select-history() {
+    local tac
+    if which tac > /dev/null; then
+        tac="tac"
+    else
+        tac="tail -r"
+    fi
+    BUFFER=$(fc -l -n 1 | \
+        eval $tac | \
+        peco --query "$LBUFFER")
+    CURSOR=$#BUFFER
+    zle clear-screen
+}
+zle -N peco-select-history
+bindkey '^r' peco-select-history
+
+function peco-cd() {
+    local dest
+    BUFFER="cd $HOME/work/$(find $HOME/work -maxdepth 1 -mindepth 1 -type d | sed -e 's,'$HOME/work/',,' | peco --query "$LBUFFER")"
+    CURSOR=$#BUFFER
+    zle accept-line
+}
+
+zle -N peco-cd
+bindkey '^]' peco-cd
