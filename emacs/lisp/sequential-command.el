@@ -106,9 +106,9 @@
 (defvar seq-store-count 0)
 (defvar seq-start-position nil
   "Stores `point' and `window-start' when sequence of calls of the same
- command was started. This variable is updated by `seq-count'")
+ command was started. This variable is updated by `seq-command-seq-count'")
 
-(defun seq-count ()
+(defun seq-command-seq-count ()
   "Returns number of times `this-command' was executed.
 It also updates `seq-start-position'."
   (if (eq last-command this-command)
@@ -127,7 +127,7 @@ It also updates `seq-start-position'."
                 ".")
        (interactive)
        (call-interactively
-        (aref ,cmdary (mod (seq-count) ,(length cmdary)))))))
+        (aref ,cmdary (mod (seq-command-seq-count) ,(length cmdary)))))))
 ;; (macroexpand '(define-sequential-command foo beginning-of-line beginning-of-buffer))
 
 (defun seq-return ()
@@ -146,7 +146,7 @@ It also updates `seq-start-position'."
 
 (defun seq-count-test ()
   (interactive)
-  (message "seq-count: %d" (seq-count)))
+  (message "seq-count: %d" (seq-command-seq-count)))
 
 (define-sequential-command seq-home
   beginning-of-line back-to-indentation beginning-of-buffer seq-return)
